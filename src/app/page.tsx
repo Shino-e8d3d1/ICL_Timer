@@ -113,6 +113,11 @@ export default function Home() {
         </section>
 
         {/* Action Area */}
+        <div className="text-center mb-2">
+           <span className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 text-xs font-bold rounded-full">
+             ▼ 次にさす目薬
+           </span>
+        </div>
         <section className={clsx("flex gap-2 justify-center", currentMedicines.length > 1 ? "flex-row" : "flex-col items-center")}>
           {currentMedicines.map(medId => (
             <div key={medId} className={clsx(currentMedicines.length > 1 ? "flex-1" : "w-full")}>
