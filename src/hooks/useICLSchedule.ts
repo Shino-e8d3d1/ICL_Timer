@@ -159,6 +159,12 @@ export function useICLSchedule() {
         }));
     }
 
+    const resetAllData = () => {
+        localStorage.removeItem(STORAGE_KEY);
+        setData(INITIAL_DATA);
+        // Force reload to clean state if needed, or just let state update trigger re-render
+    };
+
     return {
         isLoaded,
         status,
@@ -167,6 +173,8 @@ export function useICLSchedule() {
         currentMedicines,
         markComplete,
         setSurgeryInfo,
-        resetToday
+        resetToday,
+        resetAllData,
+        surgeryInfo: data.surgeryInfo
     };
 }

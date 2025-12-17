@@ -7,7 +7,7 @@ import { useWakeLock } from '@/hooks/useWakeLock';
 import { Onboarding } from '@/components/Onboarding';
 import { MedicineCard } from '@/components/MedicineCard';
 import { PrecautionList } from '@/components/PrecautionList';
-import { Calendar, Check, ExternalLink, RefreshCw } from 'lucide-react';
+import { Calendar, Check, ExternalLink, RefreshCw, Settings } from 'lucide-react';
 import clsx from 'clsx';
 
 export default function Home() {
@@ -85,13 +85,19 @@ export default function Home() {
     <main className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-20 text-gray-900 dark:text-gray-100 font-sans">
 
       {/* Header */}
+      {/* Header */}
       <header className="p-4 bg-white dark:bg-gray-800 shadow-sm flex justify-between items-center sticky top-0 z-10">
         <h1 className="font-bold text-lg">{headerText}</h1>
-        {status === 'day1+' && (
-          <button onClick={resetToday} className="text-xs flex items-center gap-1 text-gray-500 hover:text-blue-500">
-            <RefreshCw size={14} /> 朝リセット
-          </button>
-        )}
+        <div className="flex items-center gap-3">
+          {status === 'day1+' && (
+            <button onClick={resetToday} className="text-xs flex items-center gap-1 text-gray-500 hover:text-blue-500 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-md">
+              <RefreshCw size={14} /> 朝リセット
+            </button>
+          )}
+          <a href="/settings" className="text-gray-500 hover:text-gray-800 dark:hover:text-white p-1">
+            <Settings size={20} />
+          </a>
+        </div>
       </header>
 
       <div className="max-w-md mx-auto p-4 space-y-6">
@@ -114,9 +120,9 @@ export default function Home() {
 
         {/* Action Area */}
         <div className="text-center mb-2">
-           <span className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 text-xs font-bold rounded-full">
-             ▼ 次にさす目薬
-           </span>
+          <span className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 text-xs font-bold rounded-full">
+            ▼ 次にさす目薬
+          </span>
         </div>
         <section className={clsx("flex gap-2 justify-center", currentMedicines.length > 1 ? "flex-row" : "flex-col items-center")}>
           {currentMedicines.map(medId => (
