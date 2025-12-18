@@ -7,6 +7,7 @@ import { useWakeLock } from '@/hooks/useWakeLock';
 import { Onboarding } from '@/components/Onboarding';
 import { MedicineCard } from '@/components/MedicineCard';
 import { PrecautionList } from '@/components/PrecautionList';
+import { TimerButton } from '@/components/TimerButton';
 import { Calendar, Check, ExternalLink, RefreshCw, Settings } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -146,6 +147,12 @@ export default function Home() {
               <span className="text-sm font-bold">通知セット</span>
               <span className="text-xs text-gray-400">Googleカレンダー</span>
             </a>
+
+            {/* OS Default Timer Button (Android/Windows only) */}
+            <TimerButton
+              nextDropTime={nextDropTime}
+              medicines={currentMedicines.map(id => MEDICINES[id].name)}
+            />
 
             <button
               onClick={markComplete}
